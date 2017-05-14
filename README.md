@@ -1,1 +1,1 @@
-[![Docker Build Statu](https://img.shields.io/docker/build/eteg/opbp.svg?style=flat-square)](https://hub.docker.com/r/eteg/opbp-frontend/builds/)
+[![Docker Build Status](https://img.shields.io/docker/build/eteg/opbp-frontend.svg?style=flat-square)](https://hub.docker.com/r/eteg/opbp-frontend/builds/)
