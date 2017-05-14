@@ -50,6 +50,21 @@ task runYarnBuild(type: Exec, dependsOn: runYarn) {
     }
 }
 
+task resolveDependencies {
+    doLast {
+        project.rootProject.allprojects.each { subProject ->
+            subProject.buildscript.configurations.each { configuration ->
+                try { configuration.resolve() } 
+                catch (Exception e) { e.printStackTrace() }
+            }
+            subProject.configurations.each { configuration ->
+                try { configuration.resolve() } 
+                catch (Exception e) { e.printStackTrace() }
+            }
+        }
+    }
+}
+
 compileJava {
     dependsOn runYarnBuild
 }
