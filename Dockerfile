@@ -23,4 +23,4 @@ ADD opbp-frontend/build.gradle opbp-frontend/build.gradle
 RUN gradle resolveDependencies
 
 ADD . .
-RUN gradle build buildDocker --stacktrace
+RUN gradle build --stacktrace
