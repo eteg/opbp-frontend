@@ -15,4 +15,4 @@ RUN apt-get update && apt-get install -y yarn
 # Executa a build
 VOLUME /build
 ADD . .
-RUN gradle build buildDocker --stacktrace
+RUN gradle build --stacktrace
