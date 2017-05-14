@@ -28,16 +28,10 @@ repositories {
 }
 
 /*
- * Configura o código fonte
- */
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-/*
  * Tasks
  */
 task runYarn(type: Exec) {
-    workingDir "${rootDir}/opbp-frontend/app"
+    workingDir "${projectDir}/app"
     
     if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
         commandLine 'cmd', '/c', 'yarn'
@@ -46,8 +40,8 @@ task runYarn(type: Exec) {
     }
 }
 
-task runYarnBuild(type: Exec) {
-    workingDir "${rootDir}/opbp-frontend/app"
+task runYarnBuild(type: Exec, dependsOn: runYarn) {
+    workingDir "${projectDir}/app"
     
     if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
         commandLine 'cmd', '/c', 'yarn', 'build'
@@ -57,12 +51,9 @@ task runYarnBuild(type: Exec) {
 }
 
 compileJava {
-    dependsOn runYarn, runYarnBuild
+    dependsOn runYarnBuild
 }
 
 clean {
-    delete "${rootDir}/opbp-frontend/src/main/resources/META-INF/resources/webjars"
-}
- 
-dependencies {
+    delete "${projectDir}/src/"
 }
