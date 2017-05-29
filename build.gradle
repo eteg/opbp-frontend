@@ -9,16 +9,16 @@ buildscript {
 /*
  * Aplica outros plugins
  */
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
+apply plugin: "java"
+apply plugin: "eclipse"
+apply plugin: "idea"
 
 /*
  * Configura o artefato gerado pela build.
  */
 jar {
-    baseName = 'opbp-frontend'
-    version =  '0.0.1'
+    baseName = "opbp-frontend"
+    version =  "0.0.1"
 }
 
 /*
@@ -35,9 +35,9 @@ task runYarn(type: Exec) {
     workingDir "${projectDir}/app"
     
     if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
-        commandLine 'cmd', '/c', 'yarn'
+        commandLine "cmd", "/c", "yarn"
     } else {
-        commandLine 'yarn'
+        commandLine "yarn"
     }
 }
 
@@ -45,9 +45,9 @@ task runYarnBuild(type: Exec, dependsOn: runYarn) {
     workingDir "${projectDir}/app"
     
     if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
-        commandLine 'cmd', '/c', 'yarn', 'build'
+        commandLine "cmd", "/c", "yarn", "build"
     } else {
-        commandLine 'yarn', 'build'
+        commandLine "yarn", "build"
     }
 }
 
